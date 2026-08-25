@@ -10,6 +10,11 @@ class Client(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'cliente'
+        verbose_name_plural = 'clientes'
+
 
 # Modelo Ticket de soporte relacionado a Cliente
 class Ticket(models.Model):
@@ -27,3 +32,8 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.client.name}"
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'ticket'
+        verbose_name_plural = 'tickets'

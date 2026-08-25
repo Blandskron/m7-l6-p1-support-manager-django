@@ -51,7 +51,8 @@ def client_delete(request, id):
 # =========================
 
 def ticket_list(request):
-    tickets = Ticket.objects.select_related('client').all()
+    # select_related evita una consulta adicional por cada cliente mostrado.
+    tickets = Ticket.objects.select_related('client').all()  # SELECT (ORM)
     return render(request, 'clients/ticket_list.html', {'tickets': tickets})
 
 
